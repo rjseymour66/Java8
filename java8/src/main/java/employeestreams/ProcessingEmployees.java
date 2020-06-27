@@ -111,7 +111,26 @@ public class ProcessingEmployees {
 		employeeCountByDepartment.forEach(
 				(department, count) -> System.out.printf(
 						"%s has %d employee(s)%n", department, count));
-	}
-	
-	
+		
+		// sum of Employee salaries with DoubleStream sum method
+		System.out.printf(
+				"%nSum of Employees' salaries (via sum method): %.2f%n",
+				list.stream()
+					.mapToDouble(Employee::getSalary)
+					.sum());
+		
+		// calculate sum of Employee salaries with Stream reduce method
+		System.out.printf(
+				"Sum of Employees' salaries (via reduce method): %.2f%n",
+				list.stream()
+					.mapToDouble(Employee::getSalary)
+					.reduce(0, (value1, value2) -> value1 + value2));
+		
+		// average of Employee salaries with DoubleStream average method
+		System.out.printf("Average of Employees' salaries: %.2f%n",
+				list.stream()
+					.mapToDouble(Employee::getSalary)
+					.average()
+					.getAsDouble());
+	}	
 }
