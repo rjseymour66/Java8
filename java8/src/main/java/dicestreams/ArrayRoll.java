@@ -1,4 +1,4 @@
-package dice;
+package dicestreams;
 
 import java.security.SecureRandom;
 
